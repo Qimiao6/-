@@ -1,0 +1,115 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>
+//int main()
+//{
+//    char str1[] = "hello bit.";
+//    char str2[] = "hello bit.";
+//    char* str3 = "hello bit.";
+//    char* str4 = "hello bit.";
+//    if (str1 == str2)//他是两个不同空间(地址)存同一数据，数组名其实是首地址所以他们不同
+//        printf("str1 and str2 are same\n");
+//    else
+//        printf("str1 and str2 are not same\n");
+//
+//    if (str3 == str4)//两个指针指向同一内容，存的也是这个内容首地址。所以相同
+//        printf("str3 and str4 are same\n");
+//    else
+//        printf("str3 and str4 are not same\n");
+//
+//    return 0;
+//}
+//                                函数调用
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	printf("%d", Add(a, b));
+//	return 0;
+//}
+
+//                 函数指针
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	int(*pp)(int x,int y)=Add;//函数名本身就是地址所以不用取地址
+//	printf("%d",pp(a,b));//函数名本来就是地址所以不用解引用（*pp）,但用*pp也可以都没有错误
+//	return 0;
+//}
+
+//                 回调函数
+//#include<stdio.h>
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Minus(int x, int y)
+//{
+//	return x - y;
+//}
+//void crc(int(*pp)(int, int))//指针只接地址，所以不能传参到指针当中
+//{                           //如不能把Add(3,6)传到void crc(int(*pp)(int x, int y))
+//	printf("请输入两个值\n");
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	int i = pp(a,b);
+//	printf("%d\n",i);
+//}
+//int main()
+//{
+//	int i = 0;
+//	do
+//	{
+//		printf("***********  请选择计算方式  ************\n");
+//		printf("***********       1: 加      ************\n");
+//		printf("***********       2: 减      ************\n");
+//		printf("***********      0: 退出     ************\n");
+//		scanf("%d", &i);
+//		switch (i)
+//		{
+//		case 0:
+//			printf("退出\n");
+//			break;
+//		case 1:
+//			crc(Add);
+//			break;
+//		case 2:
+//			crc(Minus);
+//			break;
+//		default:
+//			printf("输入错误请重新输入\n");
+//			break;
+//		}
+//	} while (i);
+//	return 0;
+//}
+
+//             函数指针
+
+#include<stdio.h>
+int Add(int* a, int* b)
+{
+	return (*a) + (*b);
+}
+int main()
+{
+	int a = 3;
+	int b = 7;
+	int* p = &a;
+	int* pp = &b;
+	printf("%d", Add(p, pp));
+	return 0;
+}
