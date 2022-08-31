@@ -1,192 +1,122 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-//#include <stdio.h>
+//    数组指针
+//#include<stdio.h>
 //int main()
 //{
-//    int i, j = 0, k = 1, n, temp;
-//    scanf("%d", &n);
-//    for (i = 1; i <= n; i++)
-//    {
-//        temp = k;
-//        k = k + j;
-//        j = temp;
-//    }
-//    printf("%d", k);
-//}
-
-///          递归打印数字每一位
-#include<stdio.h>
-//void print(int x)//方法一
-//{
-//	if (x < 10)
+//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9 };
+//	int(*pp)[10] = &arr;
+//	for (int i = 0; i < 10; i++)
 //	{
-//		printf("%d ", x);
+//		printf("%d ", (*pp)[i]);
 //	}
-//	else
+//	printf("\n");
+//	int* p = arr;//接收首地址
+//	for (int i = 0; i < 10; i++)
 //	{
-//		print(x / 10);
-//		printf("%d ", x % 10);
+//		printf("%d ", *(p+i));
 //	}
-//}
-//void print(int x)
-//{
-//	if (x > 9)
-//	{
-//		print(x / 10);
-//	}
-//	printf("%d ", x % 10);
-//
-//}
-//
-//
-//int main()
-//{
-//	int i = 0;
-//	scanf("%d", &i);
-//	print(i);
 //	return 0;
 //}
- //          求3位数中的质数
-//#include<stdio.h>
-//int main()
-//{
-//    int i = 1;
-//    int a, j;
-//    int y = 0;
-//    int count = 0;
-//    for (a = 100; a < 999; a++)
-//    {
-//        for (j = 2; j < a; j++)
-//        {
-//
-//            if (a % j == 0)
-//            {
-//                break;
-//            }
-//        }
-//        if (a == j)
-//            count++;
-//    }
-//    printf("%d", count);
-//    return 0;
-//}
-//           求二维数组中最大值的坐标
-//#include<stdio.h>
-//int main()
-//{
-//    int n = 0;//行
-//    int m = 0;//列
-//    int x = 0;
-//    int max = 0;//最大值
-//    int y[2];//存储坐标
-//    int i = 0;
-//    int j = 0;
-//    scanf("%d%d", &n, &m);
-//    for (i = 1; i <= n; i++)
-//    {
-//        for (j = 1; j <= m; j++)
-//        {
-//            scanf("%d", &x);
-//            if (x > max)
-//            {
-//                max = x;
-//                y[0] = i;
-//                y[1] = j;
-//            }
-//        }
-//    }
-//    printf("%d %d", y[0], y[1]);
-//    return 0;
-//}
 
-//    判断账号密码
-//#include<stdio.h>
-//#include<string.h>
-//int main()
-//{
-//    char str1[10];
-//    char str2[10];
-//    scanf("%s %s", &str1, str2);
-//    if (strcmp(str1, "admin")==0)//相等返回0
-//    {
-//        if (strcmp(str2, "admin")==0)
-//        {
-//            printf("Login Success!");
-//            return 0;
-//        }
-//    }
-//    printf("Login Fail!");
-//    return 0;
-//}
 
-//      青蛙跳台阶
-//#include<stdio.h>
-//int print(int x)
-//{
-//    if (x < 2)//小于两格
-//        return 1;
-//    else
-//        return (print(x - 2) + print(x - 1));//可选择跳1/2格
-//}
-//
-//int main()
-//{
-//    int n = 0;//台阶数
-//    scanf("%d", &n);
-//    int a = print(n);
-//    printf("%d", a);
-//    return 0;
-//}
-
-//矩阵元素定位
+//              指针数组
 
 //#include<stdio.h>
 //int main()
 //{
-//    int n = 0;
-//    int m = 0;
-//    scanf("%d%d", &n, &m);
-//    int i[26][26];
-//    int a = 0;
-//    int b = 0;
-//    for (a = 0; a < n; a++)
-//    {
-//        for (b = 0; b < m; b++)
-//        {
-//            scanf("%d", &i[a][b]);
-//        }
-//    }
-//    scanf("%d%d", &a, &b);
-//    printf("%d", i[a - 1][b - 1]);
-//    return 0;
+//	int a = 7;
+//	int b = 6;
+//	int* pa = &a;
+//	int* pb = &b;
+//	int* pp[2] = { pa,pb };//指向指针的数组
+//	for (int i = 0; i < 2; i++)
+//	{
+//		printf("%d ", *pp[i]);
+//	}
+//	return 0;
 //}
-//
 
-//         二维数组中最大值坐标
+//          左旋右旋
+
 #include<stdio.h>
+void left()
+{
+	int arr[5] = { 0 };
+	int a = 0;
+	int x = 0;
+	printf("请输入一个5位数的数组\n");
+	for (a = 0; a < 5; a++)
+	{
+		scanf("%d", &arr[a]);
+	}
+	int i = 0;
+	printf("请选择左旋转个数\n");
+	scanf("%d", &i);
+	int sz = sizeof(arr)/ sizeof(arr[0]) ;
+	for (a = 0; a < i; a++)
+	{
+		//int b = arr[0];
+		for (x = 0; x < sz - 1-a; x++)
+		{
+			int m = arr[x];
+			arr[x] = arr[x + 1];
+			arr[x + 1] = m;
+		}
+	}
+	for (a = 0; a < sz; a++)
+	{
+		printf("%d ", arr[a]);
+	}
+}
+void rig()
+{
+	int arr[5] = { 0 };
+	int a = 0;
+	int x = 0;
+	printf("请输入一个5位数的数组\n");
+	for (a = 0; a < 5; a++)
+	{
+		scanf("%d", &arr[a]);
+	}
+	int i = 0;
+	printf("请选择右旋转个数\n");
+	scanf("%d", &i);
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	for (a = 0; a < i; a++)
+	{
+		for (x = sz-1; x > 0; x--)
+		{
+			int m = arr[x];
+			arr[x] = arr[x - 1];
+			arr[x - 1] = m;
+		}
+	}
+	for (a = 0; a < sz; a++)
+	{
+		printf("%d ", arr[a]);
+	}
+}
 int main()
 {
-    int n = 0;//行
-    int m = 0;//列
-    int x = 0;//输入数组的值
-    int max = 0;//最大值
-    int y[2];//储存最大值的坐标
-    int i = 0;
-    int j = 0;
-    scanf("%d%d", &n, &m);
-    for (i = 1; i <= n; i++)
-    {
-        for (j = 1; j <= m; j++)
-        {
-            scanf("%d", &x);
-            if (x > max)
-            {
-                max = x;
-                y[0] = i;
-                y[1] = j;
-            }
-        }
-    }
-    printf("%d %d", y[0], y[1]);
-    return 0;
+	int i = 0;
+	do
+	{
+		printf("\n********** 请选择模式 *********\n");
+		printf("**********   1 左旋   *********\n");
+		printf("**********   2 右旋   *********\n");
+		scanf("%d", &i);
+		switch (i)
+		{
+		case 1:
+			left();
+			break;
+		case 2:
+			rig();
+			break;
+		case 0:
+			printf("退出");
+			break;
+		}
+	} while (i);
+	
 }
-
