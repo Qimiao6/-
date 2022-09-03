@@ -1,0 +1,196 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//              左移右移
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 1;
+//	int j = 0;
+//		for (j = 0; j < 4; j++)
+//	{
+//		i >>= 1;
+//	}
+//	printf("%d", i);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (j = 0; j < 10; j++)
+//	{
+//		if (j == 5)
+//		{
+//			continue;//仅结束本次循环
+//		}
+//		printf("%d ",j);
+//	}
+//	while (j < 13)
+//	{
+//		j++;
+//		if (j == 11)
+//		{
+//			continue;//仅结束本次循环
+//		}
+//		printf("%d ", j);
+//		
+//	}
+//	//for (int i = 0; i || i++ < 5;);
+//	return 0;
+//}
+
+//       函数默认返回值
+//Add(int a, int b)//函数如果不声明返回类型。
+//{               //默认返回类型为int
+//	return a + b;
+//}
+//#include<stdio.h>
+//
+//int main()
+//{
+//	int i = Add(1, 2);
+//	printf("%d", i);
+//	return 0;
+//}
+//请你找出数组中的最大元素并检查它是否 至少是数组中每个其他数字的两倍 。
+//如果是，则返回 最大元素的下标 ，否则返回 - 1 。
+//int dominantIndex(int* nums, int numsSize)//numsSize是数组大小
+//{
+//    int i = 0;
+//    int ax = 0;// 第二大的值
+//    int Max = 0;//最大值
+//    int a = 0;
+//    int b = 0;
+//    for (i = 0; i < numsSize; i++)
+//    {
+//        if (*(nums + i) > *(nums + Max))
+//        {
+//            Max = i;
+//        }
+//    }
+//    b = *(nums + Max);
+//    *(nums + Max) = 0;
+//    for (i = 0; i < numsSize; i++)
+//    {
+//        if (*(nums + i) > *(nums + ax))
+//        {
+//            ax = i;
+//        }
+//    }
+//    a = (*(nums + ax)) * 2;
+//    if (a <= b)
+//        return Max;
+//    else
+//        return -1;
+//}
+
+//#include<stdio.h>
+//int dominantIndex(int* nums, int numsSize) {
+//    int m1 = -1, m2 = -1;
+//    int index = -1;
+//    for (int i = 0; i < numsSize; i++) {
+//        if (nums[i] > m1) {
+//            m2 = m1;
+//            m1 = nums[i];
+//            index = i;
+//        }
+//        else if (nums[i] > m2) {
+//            m2 = nums[i];
+//        }
+//    }
+//    return m1 >= m2 * 2 ? index : -1;
+//}
+//int main()
+//{
+//    int i[6] = { 1,2,3,4,5,10 };
+//    int a = sizeof(i) / sizeof(i[0]);
+//   int b =  dominantIndex(i, a);
+//   printf("%d", b);
+//    return 0;
+//}
+//       方式2
+//int dominantIndex(int* nums, int numsSize)
+//{
+//    int Max = -1;//最大值
+//    int max = -1;//
+//    int b = 0;//下标
+//    int i = 0;//循环
+//    for (i = 0; i < numsSize; i++)
+//    {
+//        if (nums[i] > Max)
+//        {
+//            max = Max;
+//            Max = nums[i];
+//            b = i;
+//        }
+//        else if (nums[i] > max)
+//        {
+//            max = nums[i];
+//        }
+//    }
+//    return Max >= max * 2 ? b : -1;
+//}
+
+//          递归
+
+//#include<stdio.h>
+//int fun(int x)
+//{
+//	return (x == 1) ? 1 : (x + fun(x - 1));
+//}
+//int main()
+//{
+//	int i = fun(10);
+//	printf("%d", i);
+//	return 0;
+//}
+
+//        找出中位值
+//#include<stdio.h>
+//int pivotIndex(int* nums, int numsSize);
+//int main()
+//{
+//    int i[9] = { 1, 7, 3, 6, 5, 6 };
+//    int n = sizeof(i) / sizeof(0);
+//    int b = pivotIndex(i, n);
+//    printf("%d", b);
+//    return 0;
+//}
+//int pivotIndex(int* nums, int numsSize) 
+//{
+//    int total = 0;
+//    for (int i = 0; i < numsSize; ++i) 
+//    {
+//        total += nums[i];//计算数组总值
+//    }
+//  int sum = 0;
+//    for (int i = 0; i < numsSize; ++i) 
+//    {
+//        if (2 * sum + nums[i] == total) //2*二分之一的值加中位数等于总数
+//        {
+//            return i;
+//        }
+//        sum += nums[i];
+//    }
+//    return -1;
+//}
+
+//                  打印测试
+//#include<stdio.h>
+//int main()
+//{
+//	char i[] = { 'a','c','\0','b','\0','j','\0' };
+//	printf("%s", i);//遇到\0停止，'\0'是结束标志符
+//	return 0;
+//}
+
+#include<stdio.h>
+int main()
+{
+	int num[2][3] = { {1,2,3},{4,5,6} };
+	char i[10] = "sidfod";//字符串不需要大括号，但字符数组的定义一定要大括号；
+	printf("%d", num[2>1][2]);//[2>1],系统判断为真，真为1所以[2>1]==[1];
+	printf("%s", i);
+	return 0;
+}
