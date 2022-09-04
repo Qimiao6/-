@@ -1,0 +1,138 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//#define size 10
+//char str1[size], str2[size + 2];
+//int main()
+//{
+//	//char str[];//[]需要给定值
+//	//int n = 5; int a[n][n + 2];//c99可以，vs2019不可以
+//	scanf("%s", str1);
+//	//int i['10'] = { 1,2,3,4,5,6,7,8,9 };
+//	printf("%s", str1);
+//	return 0;
+//}
+
+//           统计字符串中不同的字符
+#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//    int i, num = 0, len;
+//    char a[1000];
+//    char b[128] = { 0 };
+//    gets(a);
+//    len = strlen(a);
+//    for (i = 0; i < len; i++)
+//    {
+//        if (a[i] >= 0 && a[i] <= 127)
+//            b[a[i]]++;//a[i]的值为19，则b[19]++,
+//    }
+//    for (i = 0; i < 127; i++)
+//    {
+//        if (b[i] > 0)//不管值为多少只要大于1只会被统计一次
+//            num++;
+//    }
+//    printf("%d", num);
+//    return 0;
+//}
+
+//                 统计数组中较多的同种元素
+//int majorityElement(int* nums, int numsSize)
+//{
+//    int cont = 1;
+//    int b = nums[0];
+//    for (int i = 1; i < numsSize; i++)
+//    {
+//        if (cont == 0)
+//        {
+//            cont = 1;
+//            b = nums[i];
+//        }
+//        else if (nums[i] == b)
+//            cont++;
+//        else if (nums[i] != b)
+//            cont--;
+//    }
+//    return b;
+//}
+//int main()
+//{
+//    int i[10] = { 1,2,1,2,2,1,2,1,2,2 };
+//    int b = sizeof(i) / sizeof(i[0]);
+//    int m =majorityElement(i, b);
+//    printf("%d", m);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a[12] = { 1,2,3,4,5,6,7,8,9,10,11,12 }, * p[4], i;
+//	for (i = 0; i < 4; i++)
+//		p[i] = &a[i * 3];
+//	printf("%d\n",p[3][2]);//p[3]是指针，也等于首地址。[2]表示地址加2
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	char a = 'a', b;
+//	printf("%c,", ++a);//++a=b;所以输出b
+//	printf("%c\n", b = a++);//上一行++a,a已经变成了b;所以输出b
+//	return 0;//
+//}
+
+//           分配内存块
+#include<stdio.h>
+#include <stdlib.h>     /* malloc, free, rand */
+int main()
+{
+    int i = 1;
+    int y = 4;
+    int * pp = (int *) malloc(sizeof(i)*(4-1+1));
+    for (int j = 0; j < 4; j++)
+    {
+        pp[j] = j;
+    }
+    for (int j = 0; j < 4; j++)
+    {
+        printf("%d ", pp[j]);
+    }
+   // printf("%d", pp[5]);
+    return 0;
+}
+
+////           自除数
+int isSelfDividing(int num)
+{
+    int temp = num;
+    while (temp > 0)
+    {
+        int digit = temp % 10;
+        if (digit == 0 || num % digit != 0)
+        {
+            //return false;//为假
+            return 0;
+        }
+        temp /= 10;
+    }
+    //return true;//为真
+    return 1;
+}
+//int* selfDividingNumbers(int left, int right, int* returnSize)
+//{
+//    //malloc返回的是void*类型，这个（int*）是强制类型转换，
+//    int* ans = (int*)malloc(sizeof(int) * (right - left + 1));
+//    int pos = 0;
+//    for (int i = left; i <= right; i++) 
+//    {
+//        if (isSelfDividing(i)) 
+//        {
+//            ans[pos++] = i;
+//        }
+//    }
+//    *returnSize = pos;
+//    return ans;
+//}
+//
+//
