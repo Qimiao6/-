@@ -11,7 +11,7 @@
 //    else
 //        printf("str1 and str2 are not same\n");
 //
-//    if (str3 == str4)//两个指针指向同一内容，存的也是这个内容首地址。所以相同
+//    if (str3 == str4)//两个指针指向同一内容，存的也是这个内容首地址。所以相同,l,l,
 //        printf("str3 and str4 are same\n");
 //    else
 //        printf("str3 and str4 are not same\n");
