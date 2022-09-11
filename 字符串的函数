@@ -1,0 +1,340 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//size_t;//其被编译器typedef定义成了unsigned int
+//#include<string.h>
+//#include<stdio.h>
+//int main()
+//{
+//	char i[] = "dflfjhfv";
+//	char ii[] = "dshh\0hdhg";
+//	printf("%d\n", strlen(i));
+//	printf("%d\n", strlen(ii));//只要遇到'\0'就会停止
+//	if (strlen(ii) - strlen(i) > 0)//strlen的返回值是size_t,size_t被定义成了unsigned int;
+//		printf(">\n");//             所以4 - 8 =  4(unsigned);
+//	else
+//		printf("<\n");
+//	return 0;
+//}
+//
+//#include<stdio.h>
+//int main()
+//{
+//	unsigned int i = 4;
+//	unsigned int ii = 8;
+//	unsigned int t = 0;
+//	 t = i - ii;
+//	printf("%u", t);//%u 打印无符号
+//	return 0;
+//}
+//        模拟实现strlen
+
+//#include<stdio.h>
+//unsigned int my_strlen(const char* pp)
+//{
+//	int i = 0; 
+//	while (*pp++)
+//	{
+//		//pp++;
+//		i++;
+//	}
+//	return i;
+//}
+//int main()
+//{
+//	char i[] = "hfsf\0dks";
+//	int bb = my_strlen(i);
+//	printf("%d", bb);
+//	return 0;
+//}
+
+//                 strcmp的使用
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[20] = { 0 };
+//	char arr1[] = "jnsdj";
+//	strcpy(arr, arr1);//吧arr1的内容拷贝到arr中
+//	printf("%s", arr);
+//	return 0;
+//}
+#include<stdio.h>
+#include<string.h>
+//int main()
+//{
+//	char arr[20] = "xxxxxxxxxxxxx";
+//	char arr1[] = { 'a','b','\0','c','\0'};//只要遇到'\0'就会停止，不管后面
+//	//char arr1[] = {'a','b','c'};//必须以'\0'结尾，不然strcpy不会自动停止
+//	//char arr1[] = "djsfsnfk";
+//	strcpy(arr, arr1);//strcpy拷贝去目标地址拷贝内容包括'\0'
+//	printf("%s", arr);
+//	return 0;
+//}
+
+//int main()
+//{
+//	char arr[] = "xxxx";
+//	char arr1[] = "ldsklk";
+//	strcpy(arr, arr1);//源字符串 比 目标字符串  长这样会导致字符串越界。
+//	printf("%s", arr);//相当危险，请注意内存长度
+//	return 0;
+//}
+
+//int main()
+//{
+//	char* pp  = "assdfed af";
+//	char arr1[] = "ldsklk ";
+//	//strcpy(pp, arr1);//常量字符串不能被修改，不能作为目标地址
+//	strcpy(arr1, pp);//但常量字符串可以作为 ，源字符串
+//	printf("%s", arr1);
+//	return 0;
+//}
+            
+//              断言的使用
+#include<assert.h>
+//int main()
+//{
+//	char i[20] = { 0 };
+//	char* mm = NULL;
+//	char* pp = mm;
+//	char bb[] = "fhsd";
+//	char kk = 3;
+//	int yy = 2;
+//	//assert(pp);//用于判断指针是否为空
+//	assert(yy >= 3);//或者判断 ， 表达式为假自动报错
+//	return 0;
+//}
+
+////            模拟实现my_strcpy
+//#include<assert.h>
+//char* my_strcpy(char* str, const char* str1)
+//{
+//    assert(str1);
+//    assert(str);
+//    char* i = str;
+//    /*while (*str++ = *str1++)//简便
+//    {
+//        ;
+//    }*/
+//    while (*str = *str1)//易读
+//    {
+//        str++;
+//        str1++;
+//    }
+//    return i;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    char str[] = "kdjfsd";
+//    char str1[] = "xxxxxxxx";
+//    printf("%s", my_strcpy(str1, str));
+//    return 0;
+//}
+//               
+//                        strcat(字符串追加)的使用
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//   /* char str1[20] = "hello ";
+//    char str2[] = "world";*/
+//    //char str1[20] = "hello \0xxxxxxxxx";//遇到\0后开始追加字符
+//    //char str2[] = "world";
+//    char str1[20] = {'d','s','m',' '};
+//    char str2[] = "world";
+//    strcat(str1, str2);
+//    printf("%s", str1);
+//    return 0;
+//}
+
+//                      模拟实现strcat
+
+//#include<stdio.h>
+//char* my_strcat(char* str1, const char* str2)
+//{
+//    char* pp = str1;
+//    while (*str1)
+//    {
+//        str1++;
+//    }
+//    while (*str1++ = *str2++)
+//    {
+//        ;
+//    }
+//    return pp;
+//}
+//int main()
+//{
+//    char str1[20] = "holle ";
+//    char str2[] = "world";
+//    printf("%s", my_strcat(str1, str2));
+//    return 0;
+//}
+#include<stdio.h>
+#include<string.h>
+//int main()
+//{
+//    /*char str1[] = "abc";
+//    char str2[] = "abq";
+//    char str3[] = "abc";*/
+//    char str1[] = {'a','b','c'};
+//    char str3[] = { 'a','b','c' };//必须带有'\0',不然比较会越界
+//   // int pp = strcmp(str1, str2);//小于返回-1
+//    //int pp = strcmp(str2, str1);//大于返回1
+//    int pp = strcmp(str1, str3);// 等于返回0
+//    printf("%d\n", pp);
+//    if (pp > 0)
+//        printf("str1 > str3\n");
+//    else if (pp < 0)
+//        printf("str1 < str3\n");
+//    else
+//        printf("str1 = str3\n");
+//    return 0;
+//}
+
+//                   模拟实现strcmp
+//int my_strcmp(const char* str1, const char* str2)
+//{
+//    assert(str1 && str2);
+//    while (*str1++ == *str2++)
+//    {
+//        if (*str1 == '\0')
+//        {
+//            return 0;
+//        }
+//    }
+//    if (*str1 > *str2)
+//        return 1;
+//    else
+//        return -1;
+//}
+//int main()
+//{
+//   char str1[] = "abc";
+//   char str2[] = "abc";
+//   int pp = my_strcmp(str1, str2);
+//    printf("%d\n", pp);
+//    if (pp > 0)
+//        printf("str1 > str2\n");
+//    else if (pp < 0)
+//        printf("str1 < str2\n");
+//    else
+//        printf("str1 == str2\n");
+//    return 0;
+//}
+
+//int main()
+//{
+//    char str1[] = "jfhfhsfh";
+//    char str2[] = "xxxxxxxxx";
+//    strncpy(str1, str2,2);//从str2开始拷贝到str2+2,并把值赋值到str1至str1+2中；
+//    printf("%s", str1);
+//    return 0;
+//
+//}
+
+//int main()
+//{
+//    char str1[] = "jfhfhsfh";
+//    char str2[] = "xx";
+//    strncpy(str1, str2, 8);//str2元素不够会自动补'\0'
+//    printf("%s", str1);
+//    return 0;
+//
+//}
+
+//           模拟实现strncpy
+//char* my_strncpy(char* str1,char* str2,unsigned int x)
+//{
+//    char* pp = str1;
+//    while ((*str1++ = *str2++) != '\0' && x )
+//    {
+//        x--;
+//    }
+//    while (x)
+//    {
+//        *str1++ = '\0';
+//        x--;
+//    }
+//    return pp;
+//}
+//
+//int main()
+//{
+//    char str1[] = "fhgdsfhfj";
+//    char str2[] = "xxxx";
+//    char* pp = my_strncpy(str1, str2, 8);
+//    printf("%s", pp);
+//    return 0;
+//}
+
+////                     strncat的使用
+//int main()
+//{
+//    char str1[20] = "jfhfhsfh";
+//        char str2[] = "xxxxx";
+//        strncat(str1, str2, 3);//在str1的'\0'后面追加，3个str2的元素
+//        printf("%s", str1);
+//        return 0;
+//}
+
+////                     strncat的使用
+//int main()
+//{
+//    char str1[20] = "abcfhsfh";
+//    char str2[] = "abcxx";
+//    int i = strncmp(str1 , str2 , 3);//比较前三位字母的值
+//    printf("%d", i);
+//    return 0;
+//}
+
+//         strstr的使用(找字串)
+//int main()
+//{
+//    /*char str1[] = "xxxabcfh";
+//    char str2[] = "abc";*/
+//    char str1[] = "abcabcfh";//返回的是第一组的首地址，找到就停止了
+//    char str2[] = "abc";
+//    char* i = strstr(str1,str2 );//在str1中找与str2一样的字符串，找到后立即
+//    if (i != NULL)                          //返回str1中与str2中一样的第一个元素地址
+//        printf("%s", i);           //找不到返回NULLl;
+//    else
+//        printf("找不到");
+//      return 0;
+//}
+
+
+//                   模拟实现strstr
+char* my_strstr(const char* str1, const char* str2)
+{
+    const char* s1 = str1;
+    const char* s2 = str2;
+    const char* pp = str1;
+    while (*pp)
+    {
+        s1 = pp;
+        s2 = str2;
+        while((*s2!= '\0'&& *s1 != '\0') && *s2 == *s1)
+        {
+            s2++;
+              s1++;
+            if (*s2 == '\0')
+            {
+                return (char*)pp;//不强制类型转换会报错
+            }
+        }
+        pp++;
+    } 
+    return NULL;
+}
+int main()
+{
+    char str1[] = "cccababcabcfh";
+    char str2[] = "abc";
+    char* i = my_strstr(str1, str2);
+    if (i != NULL)                          
+        printf("%s", i);          
+    else
+        printf("找不到");
+    return 0;
+}
