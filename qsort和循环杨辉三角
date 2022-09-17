@@ -8,7 +8,7 @@
 //    int i = 128;
 //    int b = 0;
 //    int c = 0;
-//    for (b = 0; b < i; b++)
+//    for (b = 0; b < i; b++)//
 //    {
 //        for (c = 0; c <= i; c++)
 //        {
@@ -107,7 +107,7 @@ int main()
 		{
 			case 1:
 				my_int();
-				break;
+				中断;//
 			case 2:
 				//my_char;
 				break;
