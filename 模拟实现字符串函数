@@ -1,0 +1,334 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+				//字符串函数练习
+//字符串拷贝
+//#include<stdio.h>
+//#include<string.h>
+//#include <assert.h> 
+//void my_strcpy(char* str, const char* str1);
+//int main()
+//{
+//	char i[] = "kejrw";
+//	char bb[10] = "xxxxxxxxx";
+//	char pp[10] = { 0 };
+//     //strcpy(bb, i);//库函数
+//	my_strcpy(bb, i);//模拟实现
+//	printf("%s\n", bb);
+//	return 0;
+//}
+//void my_strcpy(char* str, const char* str1)
+//{
+//	assert(str1);
+//	while (*str++ = *str1++)
+//	{
+//		;
+//	}
+//}
+// 
+      //              返回值
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char i = '\0';
+//	char bb = '\0';
+//	int c = (i == bb);//相等返回1
+//	printf("%d", c);
+//	return 0;
+//}
+
+
+
+//                      字符串比较
+//#include<stdio.h>
+//#include<string.h>
+//#include <assert.h> 
+//int my_strcmp(char* str, const char* str1);
+//int main()
+//{
+//	char str[] = "cejrw";
+//	char str1[10] = "bejrw";
+//	char pp[10] = { 0 };
+//	//int mm = strcmp(str, str1);//库函数
+//	int mm = my_strcmp(str, str1);//模拟实现
+//	if( mm == 0)
+//	printf("str == str1");
+//	else if(mm < 0)
+//	printf("str < str1");//str 小于 str1;
+//	else
+//	printf("str > str1");//str 大于 str1
+//	return 0;
+//}
+//int my_strcmp(char* str, const char* str1)
+//{
+//	assert(str1);
+//	while (*str == *str1 )
+//	{
+//		if (*str == '\0')
+//		{
+//			return 0;
+//		}
+//		str++;
+//		str1++;
+//	}
+//	//return 0
+//	return *str - *str1;
+//}
+
+
+//           strlen(字符串计算)
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char str[] = "jfhsd";
+//	//int i = strlen(str);//库函数
+//	int i = my_strlen(str);//模拟实现
+//	printf("%d\n", i);
+//	return 0;
+//}
+//int my_strlen(char* str)
+//{
+//	int i = 0;
+//	while (*str++)
+//	{
+//		i++;
+//	}
+//	return i;
+//}
+
+////             strcat(字符串追加)
+//#include<stdio.h>
+//#include<string.h>
+//void my_strcan(char* str, char* str1);
+//int main()
+//{
+//	char str[20] = "hfhas \0xxxxxxx";
+//	char str1[] = "abcd";
+//	//strcat(str, str1);//str1中内容追加到str后边（库函数）
+//	my_strcan(str, str1);
+//	printf("%s", str);
+//	return 0;
+//}
+//void my_strcan(char* str, char* str1)
+//{
+//	while (*str++)
+//	{
+//		;
+//	}
+//	str--;
+//	while (*str1)
+//	{
+//		*str++ = *str1++;
+//	}
+//      *str = *str1;
+//}
+
+//              长度有限制的字符串函数
+//                strncpy
+//#include<stdio.h>
+//#include<string.h>
+//char* my_strncpy(char* str, const char* str1, size_t num)
+//{
+//	char* pp = str;
+//	while (num)
+//	{
+//		*str = *str1;
+//		if (*str1 != '\0')
+//		{
+//			str1++;
+//		}
+//		str++;
+//		num--;
+//	}
+//	return pp;
+//}
+//int main()
+//{
+//	char str[8] = "aaaaaaa";
+//	char str1[] = "xx";
+//	//strncpy(str, str1, 8);//库函数
+//	my_strncpy(str, str1, 8);
+//	printf("%s", str);
+//	return 0;
+//}
+
+//            strncant(字符串追加，有字符限制)
+
+
+//#include<stdio.h>
+//#include<string.h>
+//char* my_strncat(char* str, char* str1, size_t num)
+//{
+//	char* pp = str;
+//	while (*str)//找到追加字符串末尾
+//	{
+//		str++;
+//	}	while (num)
+//	{
+//		if (*str1 == '\0')
+//		{
+//			break;
+//		}
+//		*str++ = *str1++;
+//		num--;
+//	}
+//	*str = '\0';//末尾加'\0'
+//	return pp;
+//}
+//int main()
+//{
+//	char str[20] = "aaa aaa\0cccccc";
+//	char str1[20] = "ff";
+//	strncat(str, str1, 5);//库函数 // 追加完后会自动在后边加'\0'
+//	//my_strncat(str, str1, 5);//模拟实现
+//	printf("%s", str);   
+//	return 0;
+//}
+//
+////               strncmp(有限制的字符串比较)
+//#include<stdio.h>
+//#include<string.h>
+//int my_strncmp(char* str, char* str1, size_t num)
+//{
+//	while (num)
+//	{
+//		if (*str != *str1)
+//		{
+//			return *str - *str1;
+//		}
+//		str++;
+//		str1++;
+//		num--;
+//	}
+//	str--;
+//	str1--;
+//	return *str - *str1;
+//}
+//int main()
+//{
+//	char str[20] = "aaa aa\0mm";
+//   char str1[20] = "aaa am\0aa";
+//	//int i = strncmp(str, str1, 9);//库函数 // 字符串比较遇到'\0'停止比较
+//	  int i = my_strncmp(str, str1, 2);//模拟实现strncmp
+//	if (i < 0)
+//		printf("str < str1");
+//	else if (i == 0)
+//		printf("str == str1");
+//	else 
+//		printf("str > str1");
+//	return 0;
+//}
+
+//          strstr的使用(str1是否为str的一部分)
+//#include<stdio.h>
+//#include<string.h>
+//char* my_strstr(char* str,char* str1)
+//{
+//	char* pp = str;
+//	char* s1 = str;
+//	char* s2 = str1;
+//	while (*pp)
+//	{
+//		s1 = pp;
+//		s2 = str1;
+//		while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return pp;
+//		}
+//		pp++;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char str[] = "aabbabbll";
+//	char str1[] = "bbl";
+//	//char* pp = strstr(str, str1);//判断str1是否为str的一部分
+//	char* pp = my_strstr(str, str1);
+//	if (pp == NULL)
+//		printf("不存在");
+//	else
+//		printf("%s",pp);
+//	return 0;
+//}
+
+////                strtok(字符串拆分（分割）)
+//#include<string.h>
+//#include<stdio.h>
+//int main()
+//{
+//	char str[] = "aaajcbcbclpppssls";
+//	char* kk = str;
+//	char* pp = "jll";
+//	char* tt = strtok(kk, pp);
+//	printf("%s\n", tt);
+//	 tt = strtok(NULL, pp);
+//	printf("%s\n", tt);
+//	 tt = strtok(NULL, pp);
+//	printf("%s\n", tt);
+//	tt = strtok(NULL, pp);
+//	printf("%s\n", tt);
+//	return 0;
+//}
+
+//              memcpy的使用
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int i = 0;
+//	char str[] = "abcdef";
+//	char str1[10] = {0};
+//	int arr[] = { 1,2,3,4,5,6,7 };
+//	int arr1[4] = { 0 };
+//	memcpy(arr1, arr, 16);//库函数实现内存拷贝，memcpy能拷贝任意类型
+//	memcpy(str1, str, 4);//从str拷贝4字节到str1中
+//	for (i = 0; i < 4; i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	printf("\n%s\n", str1);
+//	return 0;
+//}
+
+//             模拟实现memcpy
+
+//#include<stdio.h>
+//#include<assert.h>
+//void* my_memcpy(void* str, const void* str1, size_t num)
+//{
+//	assert(str);
+//	assert(str1);
+//	void* pp = str;
+//	while (num--)
+//	{
+//		*(char*)str = *(char*)str1;
+//		str = (char*)str + 1;
+//		str1 = (char*)str1 + 1;
+//	}
+//	return pp;
+//}
+//int main()
+//{
+//	int i = 0;
+//	char str[] = "abcdef";
+//	char str1[10] = {0};
+//	int arr[] = { 1,2,3,4,5,6,7 };
+//	int arr1[4] = { 0 };
+//	my_memcpy(str1, str, 4);
+//	my_memcpy(arr1, arr, 16);
+//	for (i = 0; i < 4; i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	printf("\n%s\n", str1);
+//	return 0;
+//}
+
