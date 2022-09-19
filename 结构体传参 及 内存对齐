@@ -1,0 +1,196 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+//           结构体
+//struct library//struct是结构体关键字，library是结构体标签名
+//{
+//	char book_name[30];//括号里的是结构体成员
+//	char author[30];
+//	int price;
+//}zhuzhu;//括号外是结构体全局变量
+//#include<stdio.h>
+//int main()
+//{
+//	struct library bb = {"诸葛斌学习C语言","诸葛斌",59};//bb是结构体局部变量
+//	struct library zhuzhu = { "诸葛斌数据及结构","大冰箱",78 };
+//	printf("书名:%s   作者:%s   价格:%d", bb.book_name, bb.author, bb.price);
+//	return 0;
+//}
+
+//   结构体兼容性
+//struct pp
+//{
+//	char name[30];
+//	int price;
+//}bb;
+//struct gg
+//{
+//	char name[30];
+//	int price;
+//}*p;
+//#include<stdio.h>
+//int main()
+//{
+//	p = &bb;//虽然类型和成员一样，但他们并不相同
+//	return 0;
+//}
+
+//           简单链式访问
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char str[] = "fjhjfds";
+//	char str1[20] = {0};
+//	printf("%s\n", strcpy(str1, str));
+//	return 0;
+//}
+
+//        利用typedef 重定义类型名
+//struct book
+//{
+//	int i;
+//	int b;
+//};
+//typedef struct book mm;//把struct book 重定义为 mm
+//#include<stdio.h>
+//int main()
+//{
+//	mm nn = { 3, 6 };
+//	printf("%d %d", nn.i, nn.b);
+//	return 0;
+//}
+
+//typedef struct book//比上面简化
+//{
+//	int i;
+//	int b;
+//}mm;//把struct book 重定义为 mm
+//#include<stdio.h>
+//int main()
+//{
+//	mm nn = { 3, 6 };
+//	printf("%d %d", nn.i, nn.b);
+//	return 0;
+//	sizeof(int);
+//}
+
+//           结构体的初始化及嵌套使用
+//#include<stdio.h>
+//struct book
+//{
+//	char name[30];
+//	int jiage;
+//}binbin={"诸葛斌",59};//创建变量的同时初始化
+//struct kk
+//{
+//	char name[30];
+//	int jiage;
+//	struct book binbin;//结构体嵌套
+//};
+//int main()
+//{
+//	struct kk mm = { "诸葛斌",22,{"hhh",99} };//结构体嵌套的初始化
+//	printf("%s  %d  %s  %d", mm.name, mm.jiage, mm.binbin.name, mm.binbin.jiage);
+//	return 0;
+//}
+// 
+
+//                  结构体指定赋值
+//#include<stdio.h>
+//struct book
+//{
+//	char name[30];
+//	int jiage;
+//};
+//int main()
+//{
+//	struct book mm = { "诸葛斌",22 };
+//	printf("%s  %d  \n", mm.name, mm.jiage);
+//	 mm.jiage = 28;//单独赋值
+//	printf("%s  %d  \n", mm.name, mm.jiage);
+//	struct book bb = { .name = "冰棒", .jiage = 22 };
+//	printf("%s  %d  \n", bb.name, bb.jiage);
+//	return 0;
+//}
+
+
+//              offsetof的使用（计算成员的偏移量）
+
+//#include<stdio.h>
+//#include <stddef.h>  
+//struct book
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//struct ddc
+//{
+//	char c1;
+//	char c2;
+//	int i;
+//};
+//int main()
+//{
+//	printf("%d\n", offsetof(struct ddc, c1));//0
+//	printf("%d\n", offsetof(struct ddc, c2));//1
+//	printf("%d\n", offsetof(struct ddc, i));//4开始，int长度4所以占到了8；
+//	//printf( "%d\n",offsetof(struct book, c1));//0
+//	//printf("%d\n", offsetof(struct book, i));//4
+//	//printf("%d\n", offsetof(struct book, c2));//8
+//	return 0;
+//}
+//               自定义内存对齐数
+//#include<stdio.h>
+//#include <stddef.h>  
+//#pragma pack(1)//设置默认对齐数的声明,括号里的值表示默认对齐数
+//struct book
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//#pragma pack()//空括号表示恢复默认对齐数
+//
+//struct ddc
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct book));//0
+//	printf("%d\n", offsetof(struct book, c1));//0
+//	printf("%d\n", offsetof(struct book, i));//1
+//	printf("%d\n", offsetof(struct book, c2));//5
+//
+//	printf("\n%d\n", offsetof(struct ddc, c1));//0
+//	printf("%d\n", offsetof(struct ddc, c2));//1
+//	printf("%d\n", offsetof(struct ddc, i));//4开始，int长度4所以占到了8；
+//	
+//	return 0;
+//}
+
+//                     结构体传参
+#include<stdio.h>
+#include <stddef.h>  
+struct ddc
+{
+	int bb[100];
+	int i;
+};
+void print1(struct ddc pp)//传参会产生形参，形参是需要额外的内存
+{
+	printf("%d %d %d %d\n", pp.bb[0], pp.bb[1], pp.bb[2], pp.i);
+}
+void print2(const struct ddc* pp)//传指针指针只会产生4/8字节，省空间
+{
+	printf("%d %d %d %d", pp->bb[4], pp->bb[5],pp->bb[6],pp->i);
+}
+int main()
+{
+	struct ddc ss = { {1,2,3,4,5,6,7,8},99 };
+	print1(ss);//直接传实参
+	print2(&ss);
+	return 0;
+}
